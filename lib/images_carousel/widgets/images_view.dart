@@ -3,7 +3,7 @@ import 'package:surf_flutter_summer_school_24/images_carousel/widgets/image_page
 
 class ImagesView extends StatelessWidget {
   final PageController imagesController;
-  ImagesView({
+  const ImagesView({
     super.key,
     required this.imagesController,
     required this.urlList,
