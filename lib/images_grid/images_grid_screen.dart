@@ -20,6 +20,8 @@ class ImagesGridScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -29,6 +31,7 @@ class ImagesGridScreen extends StatelessWidget {
           width: 140,
           child: Image.asset(
             'assets/logo.png',
+            color: colorScheme.onPrimary,
           ),
         ),
         actions: [
@@ -41,9 +44,9 @@ class ImagesGridScreen extends StatelessWidget {
                 },
               );
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.more_vert,
-              color: Colors.black,
+              color: colorScheme.onPrimary,
               size: 28,
             ),
           ),

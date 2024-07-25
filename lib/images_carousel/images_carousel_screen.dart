@@ -47,16 +47,31 @@ class _ImagesCarouselScreenState extends State<ImagesCarouselScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         // Подтянуть дату публикации, если есть.
-        title: const Text('21.05.23'),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(Icons.arrow_back),
+        title: Text(
+          '21.05.23',
+          style: TextStyle(
+              color: colorScheme.onPrimary, fontWeight: FontWeight.w200),
+        ),
+        leading: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(width: 8),
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(
+                Icons.west,
+                color: colorScheme.onPrimary,
+              ),
+            ),
+          ],
         ),
         actions: [
           ImageIndexIndicator(
@@ -64,7 +79,7 @@ class _ImagesCarouselScreenState extends State<ImagesCarouselScreen> {
             currentIndexListenable: currentIndex,
           ),
           const SizedBox(
-            width: 10,
+            width: 20,
           ),
         ],
       ),
