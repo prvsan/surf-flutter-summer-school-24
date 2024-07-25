@@ -5,9 +5,11 @@ import 'package:surf_flutter_summer_school_24/images_carousel/widgets/images_vie
 class ImagesCarouselScreen extends StatefulWidget {
   /// Начальный индекс страницы.
   final int initialPage;
+  final List<String> urlList;
 
   const ImagesCarouselScreen({
     required this.initialPage,
+    required this.urlList,
     super.key,
   });
 
@@ -18,13 +20,6 @@ class ImagesCarouselScreen extends StatefulWidget {
 class _ImagesCarouselScreenState extends State<ImagesCarouselScreen> {
   late final PageController imagesController;
   late final ValueNotifier<int> currentIndex;
-
-  final List<String> urlList = [
-    'https://i.redd.it/wdqh6f48jy2d1.jpeg',
-    'https://i.pinimg.com/564x/5b/8f/22/5b8f22a8cd3a0991655f6edf2d1dd7e6.jpg',
-    'https://i.pinimg.com/564x/ba/a9/dd/baa9dd17178f52acac9a3404e1da17ca.jpg',
-    'https://i.pinimg.com/1200x/86/c4/79/86c4791a23696e1c1de548cc8557676b.jpg',
-  ];
 
   void _updateCurrentIndex() {
     currentIndex.value = imagesController.page!.round();
@@ -55,11 +50,17 @@ class _ImagesCarouselScreenState extends State<ImagesCarouselScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        // Подтянуть дату публикации, если есть.
         title: const Text('21.05.23'),
-        leading: const Icon(Icons.arrow_back),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         actions: [
           ImageIndexIndicator(
-            indexCount: urlList.length,
+            indexCount: widget.urlList.length,
             currentIndexListenable: currentIndex,
           ),
           const SizedBox(
@@ -70,7 +71,7 @@ class _ImagesCarouselScreenState extends State<ImagesCarouselScreen> {
       body: Center(
         child: ImagesView(
           imagesController: imagesController,
-          urlList: urlList,
+          urlList: widget.urlList,
         ),
       ),
     );

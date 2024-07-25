@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:surf_flutter_summer_school_24/images_carousel/images_carousel_screen.dart';
+import 'package:surf_flutter_summer_school_24/images_grid/images_grid_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,8 +10,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ImagesCarouselScreen(initialPage: 2),
+    return MaterialApp(
+      // Переделать на грид скрин, с кот. переходить на карусель
+      home: ImagesGridScreen(),
     );
   }
 }
