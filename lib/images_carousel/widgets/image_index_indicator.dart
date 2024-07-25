@@ -13,6 +13,8 @@ class ImageIndexIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       children: [
         ValueListenableBuilder(
@@ -20,19 +22,20 @@ class ImageIndexIndicator extends StatelessWidget {
           builder: (_, currentIndexListenable, __) {
             return Text(
               (currentIndexListenable + 1).toString(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
+                color: colorScheme.onPrimary,
               ),
             );
           },
         ),
         Text(
           '/${indexCount.toString()}',
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
-            color: Colors.grey,
+            color: colorScheme.surfaceBright,
           ),
         ),
       ],
